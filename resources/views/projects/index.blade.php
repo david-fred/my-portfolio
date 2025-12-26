@@ -6,10 +6,26 @@
 <div class="py-20 px-4">
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">My Projects</h1>
             <p class="text-xl text-gray-400">A collection of my work and side projects</p>
         </div>
+
+        <!-- Category Filters -->
+        @if($categories->count() > 0)
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <a href="{{ route('projects.index', ['category' => 'all']) }}" 
+               class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ $category === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                All
+            </a>
+            @foreach($categories as $cat)
+            <a href="{{ route('projects.index', ['category' => $cat]) }}" 
+               class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 {{ $category === $cat ? 'bg-blue-500 text-white' : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                {{ $cat }}
+            </a>
+            @endforeach
+        </div>
+        @endif
 
         <!-- Projects Grid -->
         @if($projects->count() > 0)
@@ -32,9 +48,14 @@
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-start justify-between mb-2">
                             <h3 class="text-xl font-semibold group-hover:text-blue-400 transition">{{ $project->title }}</h3>
-                            @if($project->featured)
-                            <span class="px-2 py-1 text-xs bg-yellow-500/20 text-yellow-400 rounded-full border border-yellow-500/30">Featured</span>
-                            @endif
+                            <div class="flex items-center gap-2">
+                                @if($project->category)
+                                <span class="px-2 py-1 text-xs bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">{{ $project->category }}</span>
+                                @endif
+                                @if($project->featured)
+                                <span class="px-2 py-1 text-xs bg-yellow-500/20 text-yellow-400 rounded-full border border-yellow-500/30">Featured</span>
+                                @endif
+                            </div>
                         </div>
 
                         <p class="text-gray-400 mb-4 flex-1">{{ Str::limit($project->description, 120) }}</p>

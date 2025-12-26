@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Portfolio') - {{ config('app.name', 'My Portfolio') }}</title>
+    <title>@yield('title', 'Home') – David Fred | Cloud DevOps Engineer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|space-grotesk:400,500,600,700" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|space-grotesk:400,500,600,700|playfair-display:400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -23,8 +29,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo/Name -->
-                <a href="{{ route('home') }}" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                    Portfolio
+                <a href="{{ route('home') }}" class="signature-logo text-2xl md:text-3xl font-normal italic tracking-wide text-white hover:text-gray-200 transition-colors duration-300">
+                    David Fred
                 </a>
 
                 <!-- Desktop Menu -->
@@ -82,14 +88,16 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold mb-4">About</h3>
-                    <p class="text-gray-400">A passionate developer creating amazing web experiences.</p>
+                    <p class="text-gray-400">Building and securing systems end-to-end. Let’s ship something solid.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition">Home</a></li>
                         <li><a href="{{ route('projects.index') }}" class="text-gray-400 hover:text-white transition">Projects</a></li>
+                        <li><a href="{{ route('activities.index') }}" class="text-gray-400 hover:text-white transition">Activities</a></li>
                         <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="{{ route('blogs.index') }}" class="text-gray-400 hover:text-white transition">Blog</a></li>
                     </ul>
                 </div>
                 <div>
@@ -120,7 +128,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; {{ date('Y') }} All rights reserved. Built with Laravel & TailwindCSS</p>
+                <p>&copy; {{ date('Y') }} All rights reserved.</p>
             </div>
         </div>
     </footer>

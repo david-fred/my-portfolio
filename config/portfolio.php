@@ -13,7 +13,7 @@ return [
 
     'name' => env('PORTFOLIO_NAME', 'Your Name'),
     'tagline' => env('PORTFOLIO_TAGLINE', 'Full Stack Developer | UI/UX Enthusiast | Problem Solver'),
-    'bio' => env('PORTFOLIO_BIO', 'I craft beautiful, performant, and scalable web applications. Passionate about creating seamless user experiences and clean code.'),
+    'bio' => env('PORTFOLIO_BIO', 'DevOps Engineer turning complex infrastructure into fast, reliable systems engineering teams trust.'),
     
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return [
         'github' => env('PORTFOLIO_GITHUB', 'https://github.com/yourusername'),
         'linkedin' => env('PORTFOLIO_LINKEDIN', 'https://linkedin.com/in/yourusername'),
         'twitter' => env('PORTFOLIO_TWITTER', 'https://twitter.com/yourusername'),
-        'dribbble' => env('PORTFOLIO_DRIBBBLE', 'https://dribbble.com/yourusername'),
+        'substack' => env('PORTFOLIO_SUBSTACK', 'https://substack.com/@yourusername'),
     ],
 
     /*

@@ -10,6 +10,40 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* Signature Logo Styles */
+.signature-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.signature-logo:hover {
+    color: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.signature-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+    transition: width 0.3s ease;
+}
+
+.signature-logo:hover::after {
+    width: 100%;
+}
+
 /* Custom Navigation Styles */
 .nav-link {
     @apply text-gray-300 hover:text-white transition-colors relative;

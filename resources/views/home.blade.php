@@ -24,8 +24,12 @@
             {{ config('portfolio.tagline') }}
         </p>
 
-        <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
+        <p class="text-lg text-gray-500 mb-4 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
             {{ config('portfolio.bio') }}
+        </p>
+
+        <p class="text-sm text-gray-500 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
+            Background in cybersecurity, backend engineering, and systems networking.
         </p>
 
         <div class="flex flex-wrap gap-4 justify-center animate-fade-in-up animation-delay-400">

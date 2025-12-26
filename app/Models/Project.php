@@ -13,6 +13,7 @@ class Project extends Model
         'title',
         'slug',
         'description',
+        'category',
         'long_description',
         'image',
         'technologies',
@@ -44,5 +45,13 @@ class Project extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('order', 'asc');
+    }
+
+    public function scopeByCategory($query, $category)
+    {
+        if ($category && $category !== 'all') {
+            return $query->where('category', $category);
+        }
+        return $query;
     }
 }
