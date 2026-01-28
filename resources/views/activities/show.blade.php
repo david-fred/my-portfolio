@@ -6,7 +6,7 @@
 <div class="py-20 px-4">
     <div class="max-w-5xl mx-auto">
         <!-- Back Button -->
-        <a href="{{ route('activities.index') }}" class="inline-flex items-center text-gray-400 hover:text-white mb-8 transition">
+        <a href="{{ route('activities.index') }}" class="inline-flex items-center mb-8 transition theme-link">
             <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -18,14 +18,14 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ $activity->title }}</h1>
 
             @if($activity->organization)
-            <p class="text-2xl text-purple-400 mb-2">{{ $activity->organization }}</p>
+            <p class="text-2xl mb-2" style="color: var(--text-primary);">{{ $activity->organization }}</p>
             @endif
 
             @if($activity->role)
-            <p class="text-xl text-gray-400 mb-4">{{ $activity->role }}</p>
+            <p class="text-xl mb-4" style="color: var(--text-secondary);">{{ $activity->role }}</p>
             @endif
 
-            <div class="flex flex-wrap gap-4 text-gray-400">
+            <div class="flex flex-wrap gap-4" style="color: var(--text-secondary);">
                 <div class="flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -47,7 +47,7 @@
 
         <!-- Activity Image -->
         @if($activity->image)
-        <div class="mb-12 rounded-lg overflow-hidden border border-gray-800">
+        <div class="mb-12 rounded-lg overflow-hidden theme-border border">
             <img src="{{ $activity->image }}" alt="{{ $activity->title }}" class="w-full h-auto">
         </div>
         @endif
@@ -55,8 +55,8 @@
         <!-- Activity Description -->
         <div class="mb-12">
             <h2 class="text-2xl font-bold mb-6">About</h2>
-            <div class="bg-gray-900 rounded-lg p-8 border border-gray-800">
-                <div class="prose prose-invert max-w-none text-gray-400 leading-relaxed text-lg">
+            <div class="theme-card p-8">
+                <div class="prose max-w-none leading-relaxed text-lg" style="color: var(--text-secondary);">
                     {!! nl2br(e($activity->description)) !!}
                 </div>
             </div>

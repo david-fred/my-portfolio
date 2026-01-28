@@ -14,7 +14,8 @@ return [
     'name' => env('PORTFOLIO_NAME', 'Your Name'),
     'tagline' => env('PORTFOLIO_TAGLINE', 'Full Stack Developer | UI/UX Enthusiast | Problem Solver'),
     'bio' => env('PORTFOLIO_BIO', 'DevOps Engineer turning complex infrastructure into fast, reliable systems engineering teams trust.'),
-    
+    'profile_photo' => env('PORTFOLIO_PROFILE_PHOTO', 'images/profile.jpg'),
+
     /*
     |--------------------------------------------------------------------------
     | Contact Information
@@ -89,4 +90,3 @@ return [
     ],
 
 ];
-

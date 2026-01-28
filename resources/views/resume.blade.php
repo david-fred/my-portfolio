@@ -8,213 +8,139 @@
         <!-- Header -->
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Resume</h1>
-            <p class="text-xl text-gray-400">My professional journey and skills</p>
-            <div class="mt-6">
-                <button class="btn-primary" onclick="window.print()">
-                    Download PDF
+            <p class="text-xl" style="color: var(--text-secondary);">My professional journey and skills</p>
+            <div class="mt-6 flex gap-4 justify-center">
+                @if(!empty($resume['file']))
+                <a href="{{ asset('storage/'.$resume['file']) }}"
+                    download
+                    class="btn-primary">
+                    Download Resume PDF
+                </a>
+                @endif
+                <button class="btn-secondary" onclick="window.print()">
+                    Print Page
                 </button>
             </div>
         </div>
 
         <!-- Summary -->
+        @if(!empty($resume['summary']))
         <section class="mb-16">
-            <div class="bg-gray-900 rounded-lg p-8 border border-gray-800">
-                <h2 class="text-2xl font-bold mb-4">Professional Summary</h2>
-                <p class="text-gray-400 leading-relaxed">
-                    Passionate Full Stack Developer with extensive experience in building scalable web applications.
-                    Specialized in modern web technologies including Laravel, React, Vue.js, and cloud infrastructure.
-                    Strong advocate for clean code, testing, and continuous learning.
+            <div class="theme-card p-8">
+                <h2 class="text-2xl font-bold mb-4" style="color: var(--text-primary);">Professional Summary</h2>
+                <p class="leading-relaxed" style="color: var(--text-secondary);">
+                    {{ $resume['summary'] }}
                 </p>
             </div>
         </section>
+        @endif
 
         <!-- Skills -->
+        @if(!empty($resume['skills']) && count($resume['skills']) > 0)
         <section class="mb-16">
             <h2 class="text-2xl font-bold mb-8">Technical Skills</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Frontend -->
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Frontend Development</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>HTML/CSS/JavaScript</span>
-                                <span class="text-gray-400">Expert</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500" style="width: 95%"></div>
-                            </div>
+                @foreach($resume['skills'] as $skill)
+                <div class="theme-card p-6">
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-primary);">{{ $skill['category'] ?? 'Skills' }}</h3>
+                    @if(!empty($skill['items']) && is_array($skill['items']))
+                    @if(count($skill['items']) <= 5)
+                        <ul class="space-y-2" style="color: var(--text-secondary);">
+                        @foreach($skill['items'] as $item)
+                        <li>{{ $item }}</li>
+                        @endforeach
+                        </ul>
+                        @else
+                        <div class="flex flex-wrap gap-2">
+                            @foreach($skill['items'] as $item)
+                            <span class="px-3 py-2 theme-badge rounded-lg text-sm">{{ $item }}</span>
+                            @endforeach
                         </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>React/Vue.js</span>
-                                <span class="text-gray-400">Advanced</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>TailwindCSS</span>
-                                <span class="text-gray-400">Expert</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                        @endif
                 </div>
-
-                <!-- Backend -->
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="text-xl font-semibold mb-4 text-green-400">Backend Development</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>PHP/Laravel</span>
-                                <span class="text-gray-400">Expert</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-green-500 to-teal-500" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Node.js</span>
-                                <span class="text-gray-400">Advanced</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-green-500 to-teal-500" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>MySQL/PostgreSQL</span>
-                                <span class="text-gray-400">Advanced</span>
-                            </div>
-                            <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-green-500 to-teal-500" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DevOps -->
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-400">DevOps & Tools</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Docker</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Git</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">CI/CD</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">AWS</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Linux</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Nginx</span>
-                    </div>
-                </div>
-
-                <!-- Other -->
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="text-xl font-semibold mb-4 text-orange-400">Other Skills</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">RESTful APIs</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">GraphQL</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">WebSockets</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Testing</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">Agile</span>
-                        <span class="px-3 py-2 bg-gray-800 rounded-lg text-sm">UI/UX</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
+        @endif
 
         <!-- Experience -->
+        @if(!empty($resume['experiences']) && count($resume['experiences']) > 0)
         <section class="mb-16">
             <h2 class="text-2xl font-bold mb-8">Work Experience</h2>
 
             <div class="space-y-8">
-                <!-- Experience Item -->
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800 border-l-4 border-l-blue-500">
+                @foreach($resume['experiences'] as $experience)
+                <div class="theme-card p-6 border-l-4" style="border-left-color: var(--text-primary);">
                     <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold">Senior Full Stack Developer</h3>
-                            <p class="text-blue-400">Tech Company Inc.</p>
+                            <h3 class="text-xl font-semibold" style="color: var(--text-primary);">{{ $experience['title'] ?? '' }}</h3>
+                            <p style="color: var(--text-primary);">{{ $experience['company'] ?? '' }}</p>
                         </div>
-                        <span class="text-gray-400 mt-2 md:mt-0">2022 - Present</span>
+                        @if(!empty($experience['period']))
+                        <span class="mt-2 md:mt-0" style="color: var(--text-secondary);">{{ $experience['period'] }}</span>
+                        @endif
                     </div>
-                    <ul class="space-y-2 text-gray-400">
+                    @if(!empty($experience['achievements']) && is_array($experience['achievements']))
+                    <ul class="space-y-2" style="color: var(--text-secondary);">
+                        @foreach($experience['achievements'] as $achievement)
                         <li class="flex items-start">
-                            <span class="text-blue-400 mr-2">•</span>
-                            Led development of multiple enterprise-level web applications
+                            <span class="mr-2" style="color: var(--text-primary);">•</span>
+                            {{ $achievement }}
                         </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-400 mr-2">•</span>
-                            Implemented CI/CD pipelines reducing deployment time by 60%
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-400 mr-2">•</span>
-                            Mentored junior developers and conducted code reviews
-                        </li>
+                        @endforeach
                     </ul>
+                    @endif
                 </div>
-
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800 border-l-4 border-l-purple-500">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-semibold">Full Stack Developer</h3>
-                            <p class="text-purple-400">Startup XYZ</p>
-                        </div>
-                        <span class="text-gray-400 mt-2 md:mt-0">2020 - 2022</span>
-                    </div>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start">
-                            <span class="text-purple-400 mr-2">•</span>
-                            Built and maintained scalable web applications using Laravel and Vue.js
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-purple-400 mr-2">•</span>
-                            Optimized database queries improving response times by 40%
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-purple-400 mr-2">•</span>
-                            Collaborated with design team to implement pixel-perfect UIs
-                        </li>
-                    </ul>
-                </div>
+                @endforeach
             </div>
         </section>
+        @endif
 
         <!-- Education -->
+        @if(!empty($resume['education']) && count($resume['education']) > 0)
         <section class="mb-16">
             <h2 class="text-2xl font-bold mb-8">Education</h2>
 
-            <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start">
-                    <div>
-                        <h3 class="text-xl font-semibold">Bachelor of Science in Computer Science</h3>
-                        <p class="text-blue-400">University Name</p>
+            <div class="space-y-6">
+                @foreach($resume['education'] as $edu)
+                <div class="theme-card p-6">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold" style="color: var(--text-primary);">{{ $edu['degree'] ?? '' }}</h3>
+                            <p style="color: var(--text-primary);">{{ $edu['institution'] ?? '' }}</p>
+                        </div>
+                        @if(!empty($edu['period']))
+                        <span class="mt-2 md:mt-0" style="color: var(--text-secondary);">{{ $edu['period'] }}</span>
+                        @endif
                     </div>
-                    <span class="text-gray-400 mt-2 md:mt-0">2016 - 2020</span>
                 </div>
+                @endforeach
             </div>
         </section>
+        @endif
 
         <!-- Certifications -->
+        @if(!empty($resume['certifications']) && count($resume['certifications']) > 0)
         <section>
             <h2 class="text-2xl font-bold mb-8">Certifications</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="font-semibold mb-2">AWS Certified Developer</h3>
-                    <p class="text-gray-400 text-sm">Amazon Web Services - 2023</p>
+                @foreach($resume['certifications'] as $cert)
+                <div class="theme-card p-6">
+                    <h3 class="font-semibold mb-2" style="color: var(--text-primary);">{{ $cert['name'] ?? '' }}</h3>
+                    <p class="text-sm" style="color: var(--text-secondary);">
+                        {{ $cert['issuer'] ?? '' }}
+                        @if(!empty($cert['year']))
+                        - {{ $cert['year'] }}
+                        @endif
+                    </p>
                 </div>
-                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 class="font-semibold mb-2">Laravel Certified</h3>
-                    <p class="text-gray-400 text-sm">Laravel - 2022</p>
-                </div>
+                @endforeach
             </div>
         </section>
+        @endif
     </div>
 </div>
 @endsection

@@ -14,7 +14,10 @@ A modern, multi-page portfolio website built with Laravel 12, Laravel Octane (Sw
 - 🗄️ **Dynamic Content**: All content stored in MySQL database
 - 🐳 **Docker Ready**: Easy deployment with Docker and Docker Compose
 - 📧 **Contact Form**: Direct messaging system with database storage
-- 🔮 **Future Ready**: Blog section ready for future implementation
+- 🎛️ **Admin Panel**: Full-featured Filament admin dashboard for content management
+- 📝 **Blog Management**: Complete blog system with rich text editing
+- 🖼️ **Gallery**: Image gallery management system
+- ⚙️ **Site Settings**: Centralized site configuration management
 
 ## Pages
 
@@ -29,6 +32,7 @@ A modern, multi-page portfolio website built with Laravel 12, Laravel Octane (Sw
 
 - **Backend**: Laravel 12 with Octane (Swoole)
 - **Frontend**: TailwindCSS v4, Blade Templates
+- **Admin Panel**: Filament 4
 - **Database**: MySQL 8.0
 - **Cache**: Redis
 - **Server**: Nginx + Laravel Octane
@@ -96,6 +100,8 @@ A modern, multi-page portfolio website built with Laravel 12, Laravel Octane (Sw
 
 9. **Visit the application**
    - Open your browser to `http://localhost:8000`
+   - Access admin panel at `http://localhost:8000/admin`
+   - Default admin credentials: `admin@portfolio.com` / `password`
 
 ### Docker Deployment
 
@@ -135,11 +141,13 @@ npm run build  # Production
 
 ### Models
 
-- **User**: Admin users for blog management
+- **User**: Admin users for content management
 - **Project**: Portfolio projects
 - **Activity**: Professional activities and experiences
 - **Contact**: Contact form submissions
-- **Blog**: Future blog posts
+- **Blog**: Blog posts with rich content
+- **GalleryImage**: Image gallery items
+- **SiteSetting**: Site-wide configuration settings
 
 ### Seeders
 
@@ -168,12 +176,39 @@ Sample data is provided for:
 3. Update nginx configuration for your domain
 4. Run `docker-compose up -d`
 
+## Admin Panel
+
+The application includes a full-featured Filament admin panel for managing all content.
+
+### Access Admin Panel
+
+1. Navigate to `/admin` in your browser
+2. Login with admin credentials (default: `admin@portfolio.com` / `password`)
+
+### Admin Features
+
+- **Projects Management**: Create, edit, and manage portfolio projects
+- **Activities Management**: Manage professional activities and timeline entries
+- **Blog Management**: Create and publish blog posts with rich content
+- **Contact Management**: View and manage contact form submissions
+- **Gallery Management**: Upload and organize gallery images
+- **Site Settings**: Configure site-wide settings including resume information
+
+### Content Management
+
+All content can be managed through the admin panel:
+- Projects with images, descriptions, and links
+- Activities with timeline display
+- Blog posts with featured images and tags
+- Gallery images with categories
+- Site settings for resume and general configuration
+
 ## Customization
 
 ### Personal Information
 
 1. Update the hero section in `resources/views/home.blade.php`
-2. Update resume data in `resources/views/resume.blade.php`
+2. Update resume data via Admin Panel → Site Settings
 3. Update contact information in `resources/views/contact.blade.php`
 4. Update social links in `resources/views/layouts/app.blade.php`
 
@@ -185,15 +220,17 @@ Sample data is provided for:
 
 ### Content
 
-1. Add your projects via database or seeders
-2. Add your activities via database or seeders
-3. Update the About section as needed
+1. Add your projects via Admin Panel → Projects
+2. Add your activities via Admin Panel → Activities
+3. Manage blog posts via Admin Panel → Blogs
+4. Upload gallery images via Admin Panel → Gallery Images
+5. Configure site settings via Admin Panel → Site Settings
 
 ## Future Enhancements
 
-- [ ] Blog section activation
-- [ ] Admin dashboard for content management
-- [ ] Image upload functionality
+- [x] Blog section activation
+- [x] Admin dashboard for content management
+- [x] Image upload functionality
 - [ ] Advanced search and filtering
 - [ ] Social media integration
 - [ ] Analytics dashboard
@@ -225,6 +262,7 @@ This project is open-sourced software licensed under the MIT license.
 Built with:
 - [Laravel](https://laravel.com)
 - [Laravel Octane](https://laravel.com/docs/octane)
+- [Filament](https://filamentphp.com)
 - [TailwindCSS](https://tailwindcss.com)
 - [Swoole](https://www.swoole.co.uk)
 

@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\SiteSetting;
+use Illuminate\View\View;
 
 class ResumeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        // Resume data can be stored in config or database
-        // For simplicity, we'll pass static data from config
-        return view('resume');
+        $settings = SiteSetting::instance();
+
+        return view('resume', [
+            'resume' => [
+                'file' => $settings->resume_file,
+                'summary' => $settings->resume_summary,
+                'skills' => $settings->resume_skills ?? [],
+                'experiences' => $settings->resume_experiences ?? [],
+                'education' => $settings->resume_education ?? [],
+                'certifications' => $settings->resume_certifications ?? [],
+            ],
+        ]);
     }
 }

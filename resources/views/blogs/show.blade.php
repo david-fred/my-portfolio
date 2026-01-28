@@ -6,7 +6,7 @@
 <div class="py-20 px-4">
     <div class="max-w-4xl mx-auto">
         <!-- Back Button -->
-        <a href="{{ route('blogs.index') }}" class="inline-flex items-center text-gray-400 hover:text-white mb-8 transition">
+        <a href="{{ route('blogs.index') }}" class="inline-flex items-center mb-8 transition theme-link">
             <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -16,7 +16,7 @@
         <!-- Blog Header -->
         <article>
             <header class="mb-12">
-                <div class="flex items-center gap-4 mb-6 text-gray-400">
+                <div class="flex items-center gap-4 mb-6" style="color: var(--text-secondary);">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -47,13 +47,13 @@
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">{{ $blog->title }}</h1>
 
                 @if($blog->excerpt)
-                <p class="text-xl text-gray-400 mb-6">{{ $blog->excerpt }}</p>
+                <p class="text-xl mb-6" style="color: var(--text-secondary);">{{ $blog->excerpt }}</p>
                 @endif
 
                 @if($blog->tags)
                 <div class="flex flex-wrap gap-2">
                     @foreach($blog->tags as $tag)
-                    <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-sm text-gray-300">{{ $tag }}</span>
+                    <span class="px-3 py-1 theme-badge rounded-full text-sm">{{ $tag }}</span>
                     @endforeach
                 </div>
                 @endif
@@ -61,27 +61,27 @@
 
             <!-- Featured Image -->
             @if($blog->featured_image)
-            <div class="mb-12 rounded-lg overflow-hidden border border-gray-800">
+            <div class="mb-12 rounded-lg overflow-hidden theme-border border">
                 <img src="{{ $blog->featured_image }}" alt="{{ $blog->title }}" class="w-full h-auto">
             </div>
             @endif
 
             <!-- Blog Content -->
             <div class="prose prose-invert prose-lg max-w-none mb-12">
-                <div class="bg-gray-900 rounded-lg p-8 border border-gray-800">
+                <div class="theme-card p-8">
                     {!! nl2br(e($blog->content)) !!}
                 </div>
             </div>
 
             <!-- Author Info -->
-            <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+            <div class="theme-card p-6">
                 <div class="flex items-center">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold" style="background-color: var(--text-primary); color: var(--bg-primary);">
                         {{ substr($blog->user->name, 0, 1) }}
                     </div>
                     <div class="ml-4">
-                        <p class="font-semibold text-lg">{{ $blog->user->name }}</p>
-                        <p class="text-gray-400">Author</p>
+                        <p class="font-semibold text-lg" style="color: var(--text-primary);">{{ $blog->user->name }}</p>
+                        <p style="color: var(--text-secondary);">Author</p>
                     </div>
                 </div>
             </div>
