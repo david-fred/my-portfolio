@@ -6,7 +6,12 @@ export default function Projects() {
       <h2 className="text-2xl font-semibold md:text-3xl">Selected work</h2>
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         {projects.map((p, i) => (
-          <article key={i} className="card border border-base-300 bg-base-200">
+          <article key={i} className="card overflow-hidden border border-base-300 bg-base-200">
+            {p.image && (
+              <figure>
+                <img src={p.image} alt={p.title} className="aspect-video w-full object-cover" />
+              </figure>
+            )}
             <div className="card-body">
               <h3 className="card-title">{p.title}</h3>
               <p className="text-base-content/70">{p.summary}</p>
@@ -16,12 +21,8 @@ export default function Projects() {
                 ))}
               </ul>
               <div className="card-actions mt-4">
-                {p.url && (
-                  <a href={p.url} className="link link-primary" target="_blank" rel="noreferrer">Live</a>
-                )}
-                {p.repo && (
-                  <a href={p.repo} className="link" target="_blank" rel="noreferrer">Code</a>
-                )}
+                {p.url && <a href={p.url} className="link link-primary" target="_blank" rel="noreferrer">Live</a>}
+                {p.repo && <a href={p.repo} className="link" target="_blank" rel="noreferrer">Code</a>}
               </div>
             </div>
           </article>

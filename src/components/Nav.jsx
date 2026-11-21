@@ -21,8 +21,6 @@ export default function Nav() {
           ))}
         </ul>
 
-        <a href="#contact" className="btn btn-primary btn-sm hidden md:inline-flex">Work with me</a>
-
         <details className="dropdown dropdown-end md:hidden">
           <summary className="btn btn-ghost btn-sm">Menu</summary>
           <ul className="menu dropdown-content z-10 mt-2 w-44 rounded-box bg-base-200 p-2 shadow">

@@ -8,11 +8,11 @@ export const site = {
   intro:
     'REPLACE: two or three sentences on how you work, what you ship, and who you help. Keep it specific and true.',
   availability: 'Open to remote roles and freelance projects',
-  email: 'you@example.com', // REPLACE
+ headshot: '/dp.jpg',
   upwork: 'https://www.upwork.com/freelancers/~017b690d24f5614ba2',
   linkedin: 'https://www.linkedin.com/in/david-fred', // REPLACE
   github: 'https://github.com/david-fred', // REPLACE
-  resumeUrl: '', // REPLACE: put a PDF in /public and set e.g. '/resume.pdf'
+  resumeUrl: '/David_Fred_Resume.pdf', // REPLACE: put a PDF in /public and set e.g. '/resume.pdf'
 };
 
 // Feature switches. Turn a section on or off without touching components.
@@ -46,6 +46,7 @@ export const projects = [
     title: 'REPLACE: project name',
     summary: 'REPLACE: the problem, what you built, and the measurable outcome.',
     stack: ['React', 'Laravel', 'MySQL'],
+     image: '',
     url: null,
     repo: null,
   },
@@ -53,6 +54,7 @@ export const projects = [
     title: 'REPLACE: project name',
     summary: 'REPLACE: the problem, what you built, and the measurable outcome.',
     stack: ['Laravel', 'Queues', 'Stripe'],
+     image: '',
     url: null,
     repo: null,
   },
