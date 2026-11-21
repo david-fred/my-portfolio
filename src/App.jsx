@@ -8,7 +8,7 @@ import Contact from './components/Contact.jsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-base-100 text-base-content">
+    <div className="bg-grid min-h-screen overflow-x-clip">
       <Nav />
       <main>
         <Hero />
@@ -17,8 +17,11 @@ export default function App() {
         {features.experience && <Experience />}
         <Contact />
       </main>
-      <footer className="border-t border-base-300 py-8 text-center text-sm text-base-content/50">
-        © {new Date().getFullYear()} {site.name}
+      <footer className="border-t border-line py-10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 font-mono text-xs text-muted md:flex-row">
+          <span>© {new Date().getFullYear()} {site.name}</span>
+          <span>Built with React, Vite &amp; Tailwind</span>
+        </div>
       </footer>
     </div>
   );

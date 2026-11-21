@@ -1,20 +1,26 @@
 import { experience } from '../content/site.js';
+import SectionHeader from './SectionHeader.jsx';
 
 export default function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
-      <h2 className="text-2xl font-semibold md:text-3xl">Experience</h2>
-      <ol className="mt-10 space-y-10 border-l border-base-300 pl-6">
+    <section id="experience" className="mx-auto max-w-6xl px-6 py-28">
+      <SectionHeader index="03" title="Experience" />
+      <ol className="space-y-12">
         {experience.map((e, i) => (
-          <li key={i} className="relative">
-            <span className="absolute -left-[31px] top-1.5 size-2.5 rounded-full bg-primary" aria-hidden="true" />
-            <p className="text-sm text-base-content/50">{e.period}</p>
-            <h3 className="text-lg font-semibold">{e.role} · {e.org}</h3>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-base-content/70">
-              {e.points.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ul>
+          <li key={i} className="grid gap-4 border-t border-line pt-8 md:grid-cols-[200px_1fr] md:gap-10">
+            <p className="font-mono text-sm text-muted">{e.period}</p>
+            <div>
+              <h3 className="text-xl font-semibold tracking-tight">{e.role}</h3>
+              <p className="mt-1 text-accent">{e.org}</p>
+              <ul className="mt-4 space-y-2 text-muted">
+                {e.points.map((p) => (
+                  <li key={p} className="flex gap-3">
+                    <span className="mt-2.5 size-1 shrink-0 rounded-full bg-accent-2" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </li>
         ))}
       </ol>
